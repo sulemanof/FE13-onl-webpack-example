@@ -1,41 +1,34 @@
-import React from 'react';
-import { Clock } from './shared/clock/Clock';
+import React, { useState } from 'react';
+import { Converter } from './converter/Converter';
+import { Form } from './Form';
+import { List } from './List';
 
-export class App extends React.Component {
-  constructor(props) {
-    super(props);
+let userCounter = 3;
 
-    this.state = {
-      showClock: false,
-      showWarning: true,
-    };
-  }
+const defaultUsers = [
+  {
+    id: 1,
+    name: 'Natalia',
+  },
+  {
+    id: 2,
+    name: 'Maria',
+  },
+];
 
-  handleClick = (event) => {
-    event.preventDefault();
-    this.setState((prevState) => ({ showClock: !prevState.showClock }));
+export const App = () => {
+  const [users, setUsers] = useState(defaultUsers);
+
+  const addUser = (name) => {
+    setUsers((prevUsers) => ([...prevUsers, { name, id: userCounter }]));
+    userCounter += 1;
   };
 
-  handleDivClick = () => {
-    console.log('div was clicked');
-  };
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ showWarning: false });
-    }, 5000);
-  }
-
-  render() {
-    if (this.state.showWarning) {
-      return <span>Nothing to show :(</span>;
-    }
-
-    return (
-      <div onClick={this.handleDivClick}>
-        <button onClick={this.handleClick}>Show clock</button>
-        {this.state.showClock && <Clock />}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Form addUser={addUser} />
+      <List users={users} />
+      <Converter />
+    </div>
+  );
+};
