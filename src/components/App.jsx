@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Route, Routes, Link, useParams } from 'react-router-dom'
+import {
+  Route, Routes, Link, useParams,
+} from 'react-router-dom';
 import { Converter } from './converter/Converter';
 import { Form } from './Form';
 import { List } from './List';
@@ -31,14 +33,13 @@ const UsersList = () => {
       <List users={users} />
     </div>
   );
-}
+};
 
 export const App = () => {
-  const [teams, setTeams]= useState([
-    { id: 1, name: "Donetsk Shakhter" },
-    { id: 2, name: "Real Madrid" },
+  const [teams, setTeams] = useState([
+    { id: 1, name: 'Donetsk Shakhter' },
+    { id: 2, name: 'Real Madrid' },
   ]);
-
 
   return (
     <div className="wrapper">
@@ -58,42 +59,40 @@ export const App = () => {
         <Route path="/teams/*" element={<TeamsPage teams={teams} setTeams={setTeams}/>} />
       </Routes>
     </div>
-  )
+  );
 };
 
 let uniqUserId = 10;
 
-const TeamsPage = ({ teams, setTeams }) => {
-  return (
+const TeamsPage = ({ teams, setTeams }) => (
     <Routes>
         <Route index element={<Teams teams={teams} setTeams={setTeams} />} />
         <Route path=":teamId" element={<Team teams={teams}/>} />
     </Routes>
-  )
-}
+);
 
 const Team = ({ teams }) => {
   const params = useParams();
 
-  debugger
+  debugger;
 
-  return <div>{params.teamId}</div>
-}
+  return <div>{params.teamId}</div>;
+};
 
 const Teams = ({ teams, setTeams }) => {
   const addUser = (value) => {
-    const newTeam = { id: uniqUserId++, name: value}
-    setTeams(users => [...users, newTeam])
-  }
+    const newTeam = { id: uniqUserId++, name: value };
+    setTeams((users) => [...users, newTeam]);
+  };
   return (
     <div>
       <Form addUser={addUser} />
       <ul>
-        {teams.map(team => <li key={team.id}><Link to={`/teams/${team.id}`}>{team.name}</Link></li>)}
+        {teams.map((team) => <li key={team.id}><Link to={`/teams/${team.id}`}>{team.name}</Link></li>)}
       </ul>
       <Routes>
        <Route path=":teamId" element={<Team />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
