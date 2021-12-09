@@ -1,26 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 
-export const Clock = ({ test }) => {
-  const [posts, setPosts] = useState(null);
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    fetch('posts').then((stream) => stream.json()).then(setPosts);
-    fetch('users').then((stream) => stream.json()).then(setUsers);
-  }, []);
-
-  const onChildCLick = useCallback(() => {
-    console.log('');
-  }, [test]);
-
-  return (
-    <div>
-      <ChildComponent doSmth={onChildCLick} />
-    </div>
-  );
-};
-
-export class Clock1 extends React.Component {
+export class Clock extends React.Component {
   constructor(props) {
     super(props);
 
