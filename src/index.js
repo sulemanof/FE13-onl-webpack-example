@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { useState } from 'react/cjs/react.development';
-import { Button, Dropdown } from 'react-bootstrap';
-import { App } from './components/App';
-import { Clock } from './components/shared/clock/Clock';
+import { configureStore } from '@reduxjs/toolkit';
+import { App } from './app/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.scss';
+import { todosReducer } from './features/todos/todosSlice';
+import { clickerReducer } from './features/clicker/clickerSlice';
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+    counter: clickerReducer,
+  },
+});
 
 ReactDOM.render(
   <BrowserRouter>
-    <App/>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

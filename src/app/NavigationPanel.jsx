@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyLink } from './shared/MyLink';
+import { MyLink } from '../components/MyLink';
 
 export const NavigationPanel = () => (
   <nav>
@@ -7,6 +7,8 @@ export const NavigationPanel = () => (
     <MyLink to="users" text="Users" />
     <MyLink to="shop" text="Shop" />
     <MyLink to="currencyConverter" text="Currency" />
+    <MyLink to="clicker" text="Clicker" />
     <MyLink to="teams" text="Teams" />
+    <MyLink to="todos" text="Todos" />
   </nav>
 );

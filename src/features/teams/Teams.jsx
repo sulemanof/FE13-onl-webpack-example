@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams, Outlet } from 'react-router-dom';
-import { Form } from './Form';
+import { MyForm } from '../../components/Form';
 
 let uniqUserId = 2;
 
@@ -19,15 +19,19 @@ export const Team = ({ teams }) => {
 
 export const Teams = ({ teams, setTeams }) => {
   const addUser = (value) => {
-    const newTeam = { id: uniqUserId += 1, name: value };
+    const newTeam = { id: (uniqUserId += 1), name: value };
     setTeams((users) => [...users, newTeam]);
   };
 
   return (
     <div>
-      <Form addUser={addUser} />
+      <MyForm onSubmit={addUser} />
       <ul>
-        {teams.map((team) => <li key={team.id}><Link to={`/teams/${team.id}`}>{team.name}</Link></li>)}
+        {teams.map((team) => (
+          <li key={team.id}>
+            <Link to={`/teams/${team.id}`}>{team.name}</Link>
+          </li>
+        ))}
       </ul>
       <Outlet />
     </div>

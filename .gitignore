@@ -1,4 +1,4 @@
 dist
 bundle
 node_modules
-.vscode
+# .vscode

@@ -8,7 +8,7 @@ const Currency = ({ name, value, calculate }) => {
   return (
     <fieldset>
       <legend>{`Enter currency in ${name}`}</legend>
-      <input type="number" value={value} onChange={onChange}/>
+      <input type="number" value={value} onChange={onChange} />
     </fieldset>
   );
 };

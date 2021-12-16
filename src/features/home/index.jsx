@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from '../shared/button/Button';
+import { Button } from '../../components/button/Button';
 
 export class Home extends Component {
   render() {

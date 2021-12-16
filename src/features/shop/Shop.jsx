@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react/cjs/react.development';
 import { Button, Dropdown } from 'react-bootstrap';
-import { Clock } from './shared/clock/Clock';
+import { Clock } from '../../components/clock/Clock';
+import { Todos } from '../todos/Todos';
 
 export const Shop = () => {
   const [showClock, setShowClock] = useState(false);
@@ -9,9 +10,17 @@ export const Shop = () => {
 
   return (
     <div>
-      <Button className="showClock" variant="success" onClick={() => setShowClock(!showClock)}>Show clock</Button>
-      <Button variant="danger" onClick={() => setTest(`${test}a`)}>Add a</Button>
-      {showClock && <Clock test={test}/>}
+      <Button
+        className="showClock"
+        variant="success"
+        onClick={() => setShowClock(!showClock)}
+      >
+        Show clock
+      </Button>
+      <Button variant="danger" onClick={() => setTest(`${test}a`)}>
+        Add a
+      </Button>
+      {showClock && <Clock test={test} />}
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Dropdown Button
@@ -20,9 +29,12 @@ export const Shop = () => {
         <Dropdown.Menu>
           <Dropdown.Item href="#/action-1">Masha</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Vasya</Dropdown.Item>
-          <Dropdown.Item onClick={() => console.log('say hi from petya')}>Petya</Dropdown.Item>
+          <Dropdown.Item onClick={() => console.log('say hi from petya')}>
+            Petya
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      <Todos hideForm={true} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form } from './Form';
+import { MyForm } from '../../components/Form';
 import { List } from './List';
 
 let userCounter = 3;
@@ -19,13 +19,13 @@ export const UsersList = () => {
   const [users, setUsers] = useState(defaultUsers);
 
   const addUser = (name) => {
-    setUsers((prevUsers) => ([...prevUsers, { name, id: userCounter }]));
+    setUsers((prevUsers) => [...prevUsers, { name, id: userCounter }]);
     userCounter += 1;
   };
 
   return (
     <div>
-      <Form addUser={addUser} />
+      <MyForm onSubmit={addUser} />
       <List users={users} />
     </div>
   );

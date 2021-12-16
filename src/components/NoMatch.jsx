@@ -20,5 +20,7 @@ export const NoMatch = () => {
       <h2>Sorry, the page you are looking for is not found!</h2>
       <h3>You wil be redirected to home page in {timer} seconds</h3>
     </div>
-  ) : <Navigate to="/" replace={true} />;
+  ) : (
+    <Navigate to="/" replace={true} />
+  );
 };
